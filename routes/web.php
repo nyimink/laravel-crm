@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,16 +17,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function() {
+    return view('articles.dashboard');
+});
+
+Route::get('/home', function() {
+    return view('articles.dashboard');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [ProjectController::class, 'index'])->name('home');
 
 
-Route::get('/articles/dashboard', function() {
+Route::get('/dashboard', function() {
     return view('articles.dashboard');
 });
 
@@ -42,6 +47,8 @@ Route::post('/projects/create',[ProjectController::class, "create"]);
 Route::get('/projects/edit/{id}',[ProjectController::class, "edit"]);
 Route::post('/projects/edit/{id}',[ProjectController::class, "update"]);
 Route::get('/projects/delete/{id}',[ProjectController::class, "delete"]);
+
+Route::get('/users', [UserController::class, "index"]);
 
 Route::get('/articles/tasks', function() {
     return view('articles.tasks');

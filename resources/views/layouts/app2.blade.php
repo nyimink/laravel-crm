@@ -6,29 +6,26 @@
             <div class="row">
                 <div class="col-2">
                     <div class="container">
-                        <ul class="list-group">
-                            <li class="list-group-item text-center text-lg-start list-group-item-action p-3">
-                                <a href="#" class="text-decoration-none ms-2">Dashboard</a>
-                            </li>
-                            <li class="list-group-item text-center text-lg-start list-group-item-action p-3">
-                                <a href="#" class="text-decoration-none ms-2">Users</a>
-                            </li>
-                            <li class="list-group-item text-center text-lg-start list-group-item-action p-3">
-                                <a href="{{ url("/clients") }}" class="text-decoration-none ms-2">Clients</a>
-                            </li>
-                            <li class="list-group-item text-center text-lg-start list-group-item-action p-3">
-                                <a href="{{ url("/projects") }}" class="text-decoration-none ms-2">Projects</a>
-                            </li>
-                            <li class="list-group-item text-center text-lg-start list-group-item-action p-3">
-                                <a href="#" class="text-decoration-none ms-2">Tasks</a>
-                            </li>
+                        <div class="list-group">
+
+                                <a href="{{ url("/dashboard") }}" class="text-primary list-group-item text-center text-lg-start list-group-item-action p-3 text-decoration-none ms-2">Dashboard</a>
+
+                                <a href="{{ url("/users") }}" class="text-primary list-group-item text-center text-lg-start list-group-item-action p-3 text-decoration-none ms-2">Users</a>
+
+                                <a href="{{ url("/clients") }}" class="text-primary list-group-item text-center text-lg-start list-group-item-action p-3 text-decoration-none ms-2">Clients</a>
+
+                                <a href="{{ url("/projects") }}" class="text-primary list-group-item text-center text-lg-start list-group-item-action p-3 text-decoration-none ms-2">Projects</a>
+
+                                <a href="#" class="text-primary list-group-item text-center text-lg-start list-group-item-action p-3 text-decoration-none ms-2">Tasks</a>
+
                             <div class="flex-grow"></div>
                             @auth
-                                <li class="list-group-item text-center text-lg-start list-group-item-action p-3">
-                                    <a href="{{ route('logout') }}" onclick="event.preventDefault();" class="text-decoration-none ms-2">Logout</a>
-                                </li>
+                                    <form action="{{ url("/logout" )}}" method="post">
+                                        @csrf
+                                        <button type="submit" onclick="return confirm('Are you sure to logout?') " class="text-primary list-group-item text-center text-lg-start list-group-item-action p-3 text-decoration-none ms-2">Logout</button>
+                                    </form>
                             @endauth
-                        </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="col-10">
