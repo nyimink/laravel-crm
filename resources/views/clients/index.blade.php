@@ -30,7 +30,7 @@
                     <td>
                         @auth
                             <a href="{{ url("/clients/edit/$client->id") }}" class="btn btn-warning">Edit</a>
-                            <a href="{{ url("/clients/delete/$client->id") }}" class="btn btn-danger">Delete</a>
+                            <a href="{{ url("/clients/delete/$client->id") }}" onclick="return confirm('Are you sure to delete?')" class="btn btn-danger">Delete</a>
                         @endauth
                     </td>
                 </tr>

@@ -48,6 +48,8 @@ Route::get('/projects/edit/{id}',[ProjectController::class, "edit"]);
 Route::post('/projects/edit/{id}',[ProjectController::class, "update"]);
 Route::get('/projects/delete/{id}',[ProjectController::class, "delete"]);
 
+Route::get('/projects/detail/{id}', [ProjectController::class, "detail"]);
+
 Route::get('/users', [UserController::class, "index"]);
 
 Route::get('/articles/tasks', function() {

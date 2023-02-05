@@ -19,7 +19,7 @@ class ProjectFactory extends Factory
         return [
             "title" => $this->faker->sentence,
             "description" => $this->faker->paragraph,
-            "deadline" => $this->faker->date,
+            "deadline" => $this->faker->dateTimeBetween('+1 month', '+3 months'),
             "user_id" => rand(1, 2),
             "client_id" => rand(1, 2),
         ];

@@ -23,6 +23,14 @@ class ProjectController extends Controller
         ]);
     }
 
+    public function detail($id)
+    {
+        $project = Project::find($id);
+        return view('projects.detail', [
+            "project" => $project
+        ]);
+    }
+
     public function add()
     {
         $clients = Client::all();
@@ -104,7 +112,7 @@ class ProjectController extends Controller
         $project = Project::find($id);
         if (Gate::allows('project-delete', $project)) {
             $project->delete();
-            return redirect("/projects")->with("info", "A Project Deleted.");
+            return redirect("/projects")->with("info", "A Project \"$project->title\" is Deleted.");
         } else {
             return redirect("/projects");
         }

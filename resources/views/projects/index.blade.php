@@ -29,7 +29,7 @@
                         <td>{{ $project->client->company }}</td>
                         <td>{{ $project->deadline }}</td>
                         <td>
-                            <a href="" class="btn btn-outline-secondary">Detail</a>
+                            <a href="{{ url("projects/detail/$project->id") }}" class="btn btn-outline-secondary">Detail</a>
                             {{-- @can('project-delete', $project)
                                 <a href="{{ url("/projects/edit/$project->id") }}" class="btn btn-warning">Edit</a>
                                 <a href="{{ url("/projects/delete/$project->id") }}" class="btn btn-danger">Delete</a>
