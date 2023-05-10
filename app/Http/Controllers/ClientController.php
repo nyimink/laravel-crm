@@ -9,7 +9,7 @@ class ClientController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('index');
+        $this->middleware('isAdmin')->except('index');
     }
 
     public function index()
@@ -17,6 +17,15 @@ class ClientController extends Controller
         $clients = Client::all();
         return view('clients.index', [
             'clients' => $clients
+        ]);
+    }
+
+    public function detail($id)
+    {
+        $client = Client::find($id);
+
+        return view('clients.detail', [
+            "client" => $client
         ]);
     }
 

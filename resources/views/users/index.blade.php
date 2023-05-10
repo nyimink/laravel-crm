@@ -15,14 +15,30 @@
                                 <b class="text-bold">Name:</b> {{ $user->name }}
                             </div>
                             <div class="">
+                                <b class="text-bold">Role:</b>
+                                @if ($user->user_type == '1')
+                                    <span class="text-danger fw-semibold">Admin</span>
+                                    @else
+                                    <span class="fw-semibold">User</span>
+                                @endif
+                            </div>
+                            <div class="">
                                 <b class="text-bold">Email:</b> {{ $user->email }}
                             </div>
                             <div class="">
-                                <b class="text-bold">Created at:</b> {{ $user->created_at }}
+                                <b class="text-bold">Since:</b> {{ $user->created_at->format('d M Y') }}
                             </div>
-                            <div class="mt-4 float-end">
-                                <a href="" class="card-link btn btn-outline-secondary">Detail</a>
-                            </div>
+                            @auth
+                                @if (Auth::user()->user_type == '1')
+                                    <div class="mt-4 float-end">
+                                        <a href="" class="card-link btn btn-outline-secondary">Detail</a>
+                                    </div>
+                                @elseif (Auth::user()->id == $user->id)
+                                    <div class="mt-4 float-end">
+                                        <a href="" class="card-link btn btn-outline-secondary">Detail</a>
+                                    </div>
+                                @endif
+                            @endauth
                         </div>
                     </div>
                 </div>

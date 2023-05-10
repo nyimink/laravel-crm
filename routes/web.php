@@ -35,6 +35,7 @@ Route::get('/dashboard', function() {
 });
 
 Route::get('/clients', [ClientController::class, "index"]);
+Route::get('/clients/detail/{id}', [ClientController::class, "detail"]);
 Route::get('/clients/create', [ClientController::class, "add"]);
 Route::post('/clients/create', [ClientController::class, "create"]);
 Route::get('/clients/edit/{id}', [ClientController::class, "edit"]);

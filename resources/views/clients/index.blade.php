@@ -18,19 +18,20 @@
             <table class="table table-striped">
             <tr>
                 <th>Company</th>
-                <th>VAT</th>
+                <th>Phone No.</th>
                 <th>Address</th>
+                <th>Projects</th>
                 <th></th>
             </tr>
             @foreach ($clients as $client)
                 <tr>
                     <td>{{ $client->company }}</td>
-                    <td>{{ $client->vat}}</td>
+                    <td>{{ $client->phone}}</td>
                     <td>{{ $client->address }}</td>
+                    <td>{{ $client->project->count() }}</td>
                     <td>
                         @auth
-                            <a href="{{ url("/clients/edit/$client->id") }}" class="btn btn-warning">Edit</a>
-                            <a href="{{ url("/clients/delete/$client->id") }}" onclick="return confirm('Are you sure to delete?')" class="btn btn-danger">Delete</a>
+                            <a href="{{ url("/clients/detail/$client->id") }}" class="btn btn-outline-secondary">Detail</a>
                         @endauth
                     </td>
                 </tr>

@@ -161,7 +161,7 @@
     </div>
 
     <footer class="text-center py-4 text-muted">
-        &copy; Copyright 2022
+        &copy; Copyright 2023
     </footer>
 
 @endsection

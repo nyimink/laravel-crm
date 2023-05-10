@@ -16,7 +16,7 @@
 
                                 <a href="{{ url("/projects") }}" class="text-primary list-group-item text-center text-lg-start list-group-item-action p-3 text-decoration-none ms-2">Projects</a>
 
-                                <a href="#" class="text-primary list-group-item text-center text-lg-start list-group-item-action p-3 text-decoration-none ms-2">Tasks</a>
+                                {{-- <a href="#" class="text-primary list-group-item text-center text-lg-start list-group-item-action p-3 text-decoration-none ms-2">Tasks</a> --}}
 
                             <div class="flex-grow"></div>
                             @auth

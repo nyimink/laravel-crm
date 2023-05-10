@@ -2,14 +2,14 @@
 
 @section('contents')
     <div class="container ms-3 p-3" style="width:1060px">
-        @if (session("info"))
+        @if (session('info'))
             <div class="alert alert-info">
-                {{ session("info") }}
+                {{ session('info') }}
             </div>
         @endif
 
         @auth
-            <a href="{{ url("/projects/create") }}" class="btn btn-success mb-3">Create Project</a>
+            <a href="{{ url('/projects/create') }}" class="btn btn-success mb-3">Create Project</a>
         @endauth
         <div class="container bg-white p-3">
             <h2 class="mb-3">Project List</h2>
@@ -25,9 +25,20 @@
                 @foreach ($projects as $project)
                     <tr>
                         <td>{{ $project->title }}</td>
-                        <td>{{ $project->user->name }}</td>
+                        <td>
+                            @auth
+                                @if (auth()->user()->id == $project->user_id)
+                                    <b class="text-success">You</b>
+                                @else
+                                    {{ $project->user->name }}
+                                @endif
+                            @endauth
+                            @guest
+                                {{ $project->user->name }}
+                            @endguest
+                        </td>
                         <td>{{ $project->client->company }}</td>
-                        <td>{{ $project->deadline }}</td>
+                        <td>{{ date('d M Y', strtotime($project->deadline)) }}</td>
                         <td>
                             <a href="{{ url("projects/detail/$project->id") }}" class="btn btn-outline-secondary">Detail</a>
                             {{-- @can('project-delete', $project)

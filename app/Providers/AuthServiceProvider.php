@@ -27,11 +27,14 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('project-delete', function($user, $project) {
-            return $project->user_id == $user->id;
+            return $project->user_id == $user->id
+                or $user->user_type == '1';
         });
 
         Gate::define('project-edit', function($user, $project) {
-            return $project->user_id == $user->id;
+            return $project->user_id == $user->id
+                or $user->user_type == '1';
         });
+
     }
 }
